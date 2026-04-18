@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Parkinsans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,9 +20,8 @@ const parkinsans = Parkinsans({
 });
 
 export const metadata: Metadata = {
-  title: "Codeguide Starter Fullstack",
-  description:
-    "A modern Next.js starter with TypeScript, TailwindCSS, shadcn/ui, Better Auth, and Drizzle ORM",
+  title: "FinancePro - Financial Management",
+  description: "Comprehensive financial management: expenses, income, assets, and investments",
 };
 
 export default function RootLayout({
@@ -31,16 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${parkinsans.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={`${geistSans.variable} ${geistMono.variable} ${parkinsans.variable} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
+          <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
     </html>
